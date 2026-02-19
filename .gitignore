@@ -1,0 +1,19 @@
+# Python junk files
+__pycache__/
+*.pyc
+
+# Virtual environment folder
+mooncyc/
+
+# Your personal data 
+cycle_data.json
+tasks.json
+
+# Streamlit settings
+.streamlit/
+
+# API keys 
+.env
+
+# Mac files
+.DS_Store
