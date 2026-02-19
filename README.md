@@ -4,9 +4,12 @@
 
 ## What is this?
 
-I made this for my AI Prototyping class. The idea is simple: your energy and mood change throughout your cycle, so why don't productivity apps care about that?
+A Prototype that connects woman with their body and makes them more aware of how the menstrual cycle can affect their daily file.
+The idea is simple: your energy and mood change throughout your cycle, so why don't productivity apps care about that?
 
-Mooncyc tracks your cycle and helps you plan tasks on days when you'll actually have the energy to do them. Plus, it suggests workouts, meals, and natural remedies based on what phase you're in.
+Mooncyc tracks your cycle and helps you plan tasks on days when you'll actually have the energy to do them.
+It will tell how you are expected to feel depending on the phase of your cycle, it will help you to get to know your body. 
+It suggests workouts, meals, and natural remedies based on what phase you're in.
 
 ## What it does
 
@@ -14,15 +17,11 @@ Mooncyc tracks your cycle and helps you plan tasks on days when you'll actually 
 - Spreads out your tasks across the next 2 weeks based on energy levels
 - Suggests exercises, meals, and meditations for each phase
 - Lets you log symptoms and shows patterns over time
-- **NEW:** Uses Claude AI to generate personalized recommendations
-
-## The AI part (the cool part)
-
-The app works fine without AI, but if you add an Anthropic API key, it can:
-
-1. **Generate custom meditations** based on how you're feeling that day
-2. **Create meal plans** that match your symptoms + cycle phase
-3. **Suggest natural remedies** for any symptom you track
+- Uses Claude AI to generate personalized recommendations:
+  
+  1. **Generate custom meditations** based on how you're feeling that day
+  2. **Create meal plans** that match your symptoms + cycle phase
+  3. **Suggest natural remedies** for any symptom you track
 
 I used the Anthropic API to make these features. The app sends your current phase and symptoms to Claude, and Claude sends back personalized advice.
 
@@ -53,7 +52,7 @@ Then open the link it gives you (usually `http://localhost:8501`)
 - `cycle_data.json` - Saves your cycle data (created when you use the app)
 - `tasks.json` - Saves your tasks (created when you use the app)
 
-## Widgets I used (for the assignment)
+## Widgets used
 
 These are Streamlit widgets we didn't cover in class:
 
@@ -73,12 +72,11 @@ These are Streamlit widgets we didn't cover in class:
 - How to calculate cycle phases from dates
 - Prompt engineering - getting Claude to format responses consistently
 
-## Limitations / What could be better
+## Limitations
 
 - Right now it's just me using it (no user accounts)
-- The AI responses aren't perfect - sometimes the formatting gets messy
-- No actual ML model predicting symptoms (it just shows patterns)
-- Can't export tasks to Google Calendar
+- The AI responses aren't perfect, you should not consider this a doctor substitute
+- Can't export tasks from and to Google Calendar
 - The meal plans are nice but not actual recipes
 
 ## If I had more time
@@ -91,4 +89,3 @@ These are Streamlit widgets we didn't cover in class:
 
 ---
 
-Made for MIBA Prototyping with AI class, February 2025
