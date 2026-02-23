@@ -583,6 +583,13 @@ def get_exercise_recommendation(phase):
 # SIDEBAR
 # ----------------------------------------
 with st.sidebar:
+    
+    if "cycle_data" not in st.session_state:
+        st.session_state.cycle_data = load_cycle_data()
+    
+    if "tasks" not in st.session_state:
+        st.session_state.tasks = load_tasks()
+
     st.title("🌙 Mooncyc")
     st.caption("*Your daily organizer buddy who gets your cycle*")
     st.divider()
