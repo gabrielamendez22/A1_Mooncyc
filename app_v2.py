@@ -296,7 +296,6 @@ FALLBACK_QUOTES = {
 
 
 def get_cycle_quote(phase: str, previous_content: str = "") -> dict:
-    # Try ZenQuotes API first — free, no key, returns a fresh random quote every call
     try:
         response = requests.get("https://zenquotes.io/api/random", timeout=5)
         if response.status_code == 200:
@@ -379,9 +378,6 @@ def refine_meditation(messages_history: list, user_feedback: str) -> tuple:
 # ELEVENLABS TEXT-TO-SPEECH
 # ─────────────────────────────────────────────────
 # Converts the LLM meditation script to MP3 audio.
-# Free tier: 10,000 characters/month at elevenlabs.io
-# Voice: "Rachel" — calm, warm, ideal for meditations.
-# Voice ID: 21m00Tcm4TlvDq8ikWAM
 
 def text_to_speech(text: str) -> tuple:
     """Returns (audio_bytes_or_None, error_message_or_None)"""
@@ -502,14 +498,10 @@ with the {phase} phase specifically. Keep each remedy concise and practical."""
 # ─────────────────────────────────────────────────
 # FEATURE 5: INTERMITTENT FASTING ADVISOR
 # ─────────────────────────────────────────────────
-# No public API exists for cycle-based fasting recommendations,
-# so the LLM does the reasoning. It receives the cycle phase,
-# cycle day number, age, and current symptoms — then decides:
+# LLM receives the cycle phase, cycle day number, age, and current symptoms — then decides:
 #   - Is today a good day to fast? (yes/no + reason)
 #   - If yes: what is the maximum safe fasting window?
 #   - If no: what should the user eat instead?
-# This is non-trivial because the LLM makes a data-driven
-# medical judgment, not just text formatting.
 
 def get_fasting_advice(phase: str, day_in_cycle: int, symptoms: list, age: int) -> str:
     if not co:
@@ -664,7 +656,6 @@ with st.sidebar:
 
     st.divider()
     st.subheader("👤 About Me")
-    # Age is used in all LLM prompts to personalise recommendations
     user_age = st.number_input("My Age", min_value=13, max_value=60, value=25, step=1)
 
     if st.button("💾 Save My Info"):
@@ -890,8 +881,7 @@ if phase:
         text_color = "#1b5e20" if is_good else "#e65100"
         icon       = "✅" if is_good else "⚠️"
 
-        # Use st.container + individual st.write calls so LLM text is NEVER
-        # injected into an f-string with unsafe_allow_html — that was the bug.
+
         st.markdown(f"""
         <div style="background:{box_color};border-radius:12px;padding:20px 24px;margin:12px 0 4px 0;">
             <p style="color:{text_color};font-size:1rem;font-weight:700;margin:0;">
