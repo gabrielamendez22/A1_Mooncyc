@@ -89,3 +89,47 @@ These are Streamlit widgets we didn't cover in class:
 
 ---
 
+---
+
+# 🌙 Mooncyc v2
+
+**AI-powered app to sync your productivity, wellness, and nutrition with your menstrual cycle**
+
+## What changed in v2?
+
+This second version goes much deeper than v1. Instead of rule-based suggestions, everything is now powered by a real LLM pipeline using **Cohere** (`command-r-plus-08-2024`). The app personalizes recommendations based on your cycle phase, logged symptoms, and age.
+
+### AI-powered features (Cohere)
+
+1. **AI Meditation** — generates a personalized script based on your phase, mood, and symptoms. You can refine it by giving feedback and it rewrites it keeping the full conversation history (multi-turn LLM pipeline)
+2. **Audio Meditation** — converts the script to speech using ElevenLabs TTS
+3. **AI Meal Plan** — structured output parsed by Python into a 4-column breakfast/lunch/dinner/snacks display
+4. **Intermittent Fasting Advisor** — the LLM reasons about whether fasting is safe today based on your cycle day, symptoms, and age
+5. **AI Natural Remedies** — generates remedies for your exact combination of tracked symptoms
+6. **Cycle Pattern Analyzer** — pre-processes all your logged symptom history in Python, then sends a structured summary to the LLM for personalized insights
+
+## How to run v2 locally
+```bash
+streamlit run app_v2.py
+```
+
+Add a `.env` file with:
+```
+COHERE_API_KEY=your_key_here
+ELEVENLABS_API_KEY=your_key_here
+```
+
+## API keys needed
+
+| Key | Where to get it | Required? |
+|-----|----------------|-----------|
+| `COHERE_API_KEY` | cohere.com → free trial | Yes, for all AI features |
+| `ELEVENLABS_API_KEY` | elevenlabs.io → free tier | No, only for audio meditation |
+
+## What I learned in v2
+
+- How to build a multi-turn LLM pipeline (conversation history for iterative refinement)
+- How to prompt an LLM for structured output and parse it with Python
+- How to pre-process data in Python before sending it to an LLM
+- How to integrate TTS audio into a Streamlit app
+- That API model names go deprecated — always check you're using a current one
